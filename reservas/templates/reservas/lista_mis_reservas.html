@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Mis Reservas - Kargo{% endblock %}
+
+{% block content %}
+    <h1>Mis Reservas</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pista</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Estado</th>
+                <th>Acciones</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for reserva in reservas %}
+                <tr>
+                    <td>{% if reserva.pista %}{{ reserva.pista.nombre }}{% else %}Sin asignar{% endif %}</td>
+                    <td>{{ reserva.fecha }}</td>
+                    <td>{{ reserva.hora }}</td>
+                    <td>{{ reserva.estado }}</td>
+                    <td><a href="{% url 'editar_reserva' reserva.id %}">Editar</a></td> 
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No tienes reservas registradas.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

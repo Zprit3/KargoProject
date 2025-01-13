@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar pista - Kargo{% endblock %}
+
+
+{% block content %}
+
+<h1>{% if form.instance.pk %}Editar Pista{% else %}Crear Pista{% endif %}</h1>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+    <a href="{% url 'lista_pistas' %}">Cancelar</a>
+</form>
+
+{% endblock %}

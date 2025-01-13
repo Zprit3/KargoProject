@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Reserva Exitosa - Kargo{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1 class="display-4">¡Reserva Creada!</h1>
+        <p>Tu reserva para el día {{ fecha }} a las {{ hora }} se ha registrado correctamente.</p>        <hr class="my-4">
+        <p>¡Gracias por elegir Kargo!</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'home' %}" role="button">Volver al Inicio</a>
+    </div>
+{% endblock %}

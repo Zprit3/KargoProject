@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Inicio - Kargo{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center"> 
+        <h1 class="display-4">Bienvenido a Kargo</h1>
+        <p class="lead">¡La mejor experiencia de karting te espera!</p>
+        <hr class="my-4">
+        <p>Vive la adrenalina en nuestras pistas de última generación. ¡Reserva ahora y prepárate para la velocidad!</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'crear_reserva' %}" role="button">Reserva Ahora</a>
+    </div>
+
+    <div class="row mt-5"> {# Sección de características #}
+        <div class="col-md-4">
+            <h2>Pistas de Alto Nivel</h2>
+            <p>Nuestras pistas están diseñadas para ofrecerte la máxima emoción y seguridad, con curvas desafiantes y rectas para alcanzar altas velocidades.</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Karts de Última Generación</h2>
+            <p>Conduce karts potentes y modernos, equipados con la última tecnología para una experiencia de conducción inigualable.</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Seguridad Garantizada</h2>
+            <p>Priorizamos tu seguridad con estrictos protocolos y un equipo de profesionales altamente capacitados.</p>
+        </div>
+    </div>
+    <hr>
+    <h2>Nuestra Pista</h2>
+    <div class="mt-5 d-flex justify-content-center">
+        
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.pexels.com/photos/12532098/pexels-photo-12532098.jpeg" class="d-block w-100" alt="Karting01">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/5640491/pexels-photo-5640491.jpeg" class="d-block w-100" alt="Karting02">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/5640510/pexels-photo-5640510.jpeg" class="d-block w-100" alt="Karting03">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+{% endblock %}

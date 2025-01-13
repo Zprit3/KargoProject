@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Dashboard de Reservas</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pista</th>
+                <th>Estado</th>
+                <th>Cantidad de Clientes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resultado in resultados %}
+                <tr>
+                    <td>{{ resultado.0 }}</td> {# Nombre de la pista #}
+                    <td>{{ resultado.1 }}</td> {# Estado de la reserva #}
+                    <td>{{ resultado.2 }}</td> {# Cantidad de clientes #}
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No hay reservas para el turno actual.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

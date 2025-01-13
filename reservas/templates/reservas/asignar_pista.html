@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Asignacion de pista - Kargo{% endblock %}
+
+{% block content %}
+<h1>Asignar Pista a Reserva</h1>
+
+<h2>Reserva:</h2>
+<p>Cliente: {{ reserva.cliente.user.username }}</p>
+<p>Fecha: {{ reserva.fecha }}</p>
+<p>Hora: {{ reserva.hora }}</p>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <label for="pista">Seleccionar Pista:</label>
+    <select name="pista" id="pista">
+        <option value="">---------</option>  {# Opción por defecto #}
+        {% for pista in pistas %}
+        <option value="{{ pista.id }}">{{ pista.nombre }} ({{ pista.tipo }}) - Capacidad: {{pista.capacidad_por_turno}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Asignar</button>
+    <a href="{% url 'lista_reservas_admin' %}">Cancelar</a>
+</form>
+{% endblock %}

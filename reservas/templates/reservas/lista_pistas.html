@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Pistas - Kargo{% endblock %}
+
+
+{% block content %}
+
+<h1>Lista de Pistas</h1>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<a href="{% url 'crear_pista' %}">Crear Nueva Pista</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Capacidad por Turno</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pista in pistas %}
+        <tr>
+            <td>{{ pista.nombre }}</td>
+            <td>{{ pista.tipo }}</td>
+            <td>{{ pista.capacidad_por_turno }}</td>
+            <td>
+                <a href="{% url 'editar_pista' pista.pk %}">Editar</a> |
+                <a href="{% url 'eliminar_pista' pista.pk %}">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No hay pistas registradas.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
